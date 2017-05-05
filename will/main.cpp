@@ -4,8 +4,6 @@
 #include <GL\glew.h>
 #include <GLFW\glfw3.h>
 
-#define currenttime std::chrono::steady_clock::now().time_since_epoch().count()
-
 std::thread thread1;
 std::thread thread2;
 
@@ -21,7 +19,7 @@ GLFWwindow* w1;
 
 int main() {
 
-	loopstart = currenttime;
+	loopstart = std::chrono::steady_clock::now().time_since_epoch().count();
 
 	setup();
 	std::thread thread1(update);

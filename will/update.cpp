@@ -1,23 +1,20 @@
 #include <iostream>
 #include <chrono>
 
-#define currenttime std::chrono::steady_clock::now().time_since_epoch().count()
-
 void input();
 
 extern bool loop;
 extern long ticklength;
 long long tp1;
 
-void update() {
-	std::cout << "update works" << std::endl;
-	while (loop) {
-		tp1 = currenttime;
+void update() 
+{
+	while (loop)
+	{
+		tp1 = std::chrono::steady_clock::now().time_since_epoch().count();
 
-		input();
+		std::cout << "u ";
 
-		std::cout << "update" << std::endl;
-
-		while (currenttime - tp1 <= ticklength);
+		while (std::chrono::steady_clock::now().time_since_epoch().count() - tp1 <= ticklength);
 	}
 }
