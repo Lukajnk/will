@@ -1,20 +1,24 @@
 #include <iostream>
 #include <chrono>
-
-void input();
+#include "GLFW\glfw3.h"
 
 extern bool loop;
 extern long ticklength;
-long long tp1;
+extern GLFWwindow *w1;
 
 void update() 
 {
+	long long tpu;
+
 	while (loop)
 	{
-		tp1 = std::chrono::steady_clock::now().time_since_epoch().count();
-
+		tpu = std::chrono::steady_clock::now().time_since_epoch().count();
 		std::cout << "u ";
 
-		while (std::chrono::steady_clock::now().time_since_epoch().count() - tp1 <= ticklength);
+		if (glfwGetKey(w1, GLFW_KEY_ESCAPE) == true) {
+			loop = false;
+		}
+
+		while (std::chrono::steady_clock::now().time_since_epoch().count() - tpu <= ticklength);
 	}
 }
