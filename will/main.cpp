@@ -1,7 +1,6 @@
 #include <chrono>
 #include <thread>
 #include <iostream>
-#include <GL\glew.h>
 #include <GLFW\glfw3.h>
 
 std::thread thread1;

@@ -1,13 +1,18 @@
 #include <iostream>
-#include <GL\glew.h>
 #include <GLFW\glfw3.h>
 
 extern GLFWwindow *w1;
 
+
+
 void setup() 
 {
 	glfwInit();
-	glfwWindowHint(GLFW_DECORATED, false);
+
+	//glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	//glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+
+	//glfwWindowHint(GLFW_DECORATED, false);
 
 	GLFWvidmode *mode;
 	mode = (GLFWvidmode*)glfwGetVideoMode(glfwGetPrimaryMonitor());
