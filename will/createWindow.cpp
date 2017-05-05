@@ -18,4 +18,8 @@ void createWindow()
 	glfwSetWindowPos(w1, mode->width / 2 - 1000 / 2, mode->height / 2 - 600 / 2);
 
 	glfwMakeContextCurrent(w1);
+
+	glMatrixMode(GL_PROJECTION);
+	glOrtho(0, 1000, 0, 600, -1, 1);
+	glMatrixMode(GL_MODELVIEW);
 }
