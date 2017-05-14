@@ -2,8 +2,13 @@
 
 extern GLFWwindow* w1;
 
+
+
 void createWindow()
 {
+	int window_width = 1000;
+	int window_height = 600;
+
 	glfwInit();
 
 	glfwWindowHint(GLFW_VERSION_MAJOR, 3);
@@ -11,15 +16,15 @@ void createWindow()
 	glfwWindowHint(GLFW_DECORATED, false);
 	glfwWindowHint(GLFW_RESIZABLE, false);
 
-	w1 = glfwCreateWindow(1000, 600, "will", 0, 0);
+	w1 = glfwCreateWindow(window_width, window_height, "will", 0, 0);
 
 	GLFWvidmode *mode;
 	mode = (GLFWvidmode*)glfwGetVideoMode(glfwGetPrimaryMonitor());
-	glfwSetWindowPos(w1, mode->width / 2 - 1000 / 2, mode->height / 2 - 600 / 2);
+	glfwSetWindowPos(w1, mode->width / 2 - window_width / 2, mode->height / 2 - window_height / 2);
 
 	glfwMakeContextCurrent(w1);
 
 	glMatrixMode(GL_PROJECTION);
-	glOrtho(0, 1000, 0, 600, -1, 1);
+	glOrtho(0, window_width, 0, window_height, -1, 1);
 	glMatrixMode(GL_MODELVIEW);
 }

@@ -4,7 +4,7 @@
 #include "GLFW\glfw3.h"
 
 bool loop = true;
-long ticklength = 1000000000 / 30;
+long ticklength = 1000000000 / 5;
 long long loopstart, tpr;
 GLFWwindow *w1;
 
@@ -24,7 +24,7 @@ int main()
 	{
 		tpr = std::chrono::steady_clock::now().time_since_epoch().count();
 
-		glClearColor(0.0f, 0.3f, 0.3f, 1.0f);
+		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		render();
