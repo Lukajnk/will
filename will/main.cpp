@@ -8,6 +8,11 @@ std::thread thread_update;
 bool loop = true;
 long long point_A, point_U, point_R;
 
+bool mForward	= false;
+bool mBack		= false;
+bool rLeft		= false;
+bool rRight		= false;
+
 
 void setup()
 {
@@ -23,11 +28,12 @@ void setup()
 	glfwWindowHint(GLFW_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_DECORATED, false);
 	glfwWindowHint(GLFW_RESIZABLE, false);
-	glfwWindowHint(GLFW_SAMPLES, 4);
+	//glfwWindowHint(GLFW_SAMPLES, 4);
 
 	w1 = glfwCreateWindow(window_width, window_height, "Gillow", 0, 0);
 
 	glfwSetWindowPos(w1, window_width / 2, window_height / 2);
+	glfwSetInputMode(w1, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 	glfwMakeContextCurrent(w1);
 
@@ -48,23 +54,27 @@ void update()
 		}
 
 		if (glfwGetKey(w1, GLFW_KEY_W) == true) {
-			std::cout << "moving forward\n";
+			mForward = true;
+		} else {
+			mForward = false;
 		}
 
 		if (glfwGetKey(w1, GLFW_KEY_S) == true) {
-			std::cout << "moving back\n";
+			mBack = true;
+		} else {
+			mBack = false;
 		}
 
 		if (glfwGetKey(w1, GLFW_KEY_A) == true) {
-			std::cout << "turning left\n";
+			rLeft = true;
+		} else {
+			rLeft = false;
 		}
 
 		if (glfwGetKey(w1, GLFW_KEY_D) == true) {
-			std::cout << "turning right\n";
-		}
-
-		if (glfwGetKey(w1, GLFW_KEY_SPACE) == true) {
-			std::cout << "jumping\n";
+			rRight = true;
+		} else {
+			rRight = false;
 		}
 
 		while (std::chrono::steady_clock::now().time_since_epoch().count() - point_U <= 40000000);
